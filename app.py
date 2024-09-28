@@ -13,7 +13,6 @@
 # ---
 
 # +
-
 import subprocess
 import sys
 import os
@@ -29,6 +28,7 @@ def install_requirements():
 
 # Panggil fungsi untuk menginstal
 install_requirements()
+
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -315,7 +315,10 @@ fitur-fitur lainnya dalam dataset. Melalui evaluasi kinerja model seperti Mean S
     st.write("Shape X:", X.shape)
     st.write("Shape y:", y.shape)
     with st.expander("Penjelasan Lengkap Kode"):
-        st.write(""" """)
+        st.write("""Pada kode ini, kita memisahkan DataFrame yang telah dipersiapkan (`df_prep`) menjadi dua variabel: `X` dan `y`. 
+    Variabel `X` berisi semua kolom fitur yang diperlukan untuk model prediksi, dengan menghapus kolom `Exam_Score` 
+    yang merupakan nilai target. Sementara itu, variabel `y` menyimpan kolom `Exam_Score` yang akan diprediksi. 
+    Proses pemisahan ini penting untuk mempersiapkan data sebelum melatih model machine learning. """)
 
 
     # Membagi dataset menjadi training dan testing set
@@ -327,7 +330,12 @@ fitur-fitur lainnya dalam dataset. Melalui evaluasi kinerja model seperti Mean S
     st.write("Shape y_train:", y_train.shape)
     st.write("Shape y_test:", y_test.shape)
     with st.expander("Penjelasan Lengkap Kode"):
-        st.write(""" """)
+        st.write("""Pada kode ini, kita membagi dataset yang telah dipisahkan menjadi dua bagian: data pelatihan dan data pengujian 
+    menggunakan fungsi `train_test_split` dari scikit-learn. Variabel `X_train` dan `y_train` akan digunakan untuk 
+    melatih model, sedangkan `X_test` dan `y_test` akan digunakan untuk menguji performa model setelah dilatih. 
+    Dengan menggunakan parameter `test_size=0.2`, kita menetapkan bahwa 20% dari total data akan digunakan sebagai 
+    data pengujian, sementara 80% sisanya digunakan untuk pelatihan. Parameter `random_state=42` menjamin bahwa 
+    pembagian data akan konsisten setiap kali kode dijalankan. """)
 
 
     # Standarisasi fitur
@@ -337,7 +345,13 @@ fitur-fitur lainnya dalam dataset. Melalui evaluasi kinerja model seperti Mean S
     X_test = scaler.transform(X_test)
     st.code("scaler = StandardScaler()\nX_train = scaler.fit_transform(X_train)\nX_test = scaler.transform(X_test)", language='python')
     with st.expander("Penjelasan Lengkap Kode"):
-        st.write(""" """)
+        st.write("""Pada bagian kode ini, kita melakukan standarisasi terhadap fitur-fitur dalam dataset menggunakan `StandardScaler` 
+    dari scikit-learn. Pertama, objek `scaler` dibuat untuk menginisialisasi standarizer. Kemudian, metode `fit_transform` 
+    diterapkan pada `X_train` untuk menghitung rata-rata dan deviasi standar dari fitur, sekaligus melakukan transformasi 
+    pada data pelatihan agar memiliki distribusi dengan rata-rata 0 dan deviasi standar 1. Selanjutnya, metode 
+    `transform` diterapkan pada `X_test` untuk mengubah data pengujian dengan parameter yang sama yang digunakan untuk 
+    data pelatihan, sehingga model dapat menguji data dalam skala yang konsisten. Proses ini penting untuk memastikan 
+    bahwa model tidak bias terhadap skala fitur yang berbeda. """)
 
 
     # ---- Uji Coba di beberapa model ----
