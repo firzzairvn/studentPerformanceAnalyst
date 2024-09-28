@@ -14,6 +14,22 @@
 
 # +
 
+import subprocess
+import sys
+import os
+
+# Fungsi untuk menginstal dependensi dari requirements.txt
+def install_requirements():
+    if not os.path.isfile("requirements.txt"):
+        print("File requirements.txt tidak ditemukan!")
+        return
+
+    # Menginstal dependensi
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+
+# Panggil fungsi untuk menginstal
+install_requirements()
+
 import warnings
 warnings.filterwarnings('ignore')
 
