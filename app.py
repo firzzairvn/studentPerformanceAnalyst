@@ -54,7 +54,7 @@ st.title("Student Performance Analyst")
 st.markdown("""
     <p style='font-size:18px; color:gray; text-align: justify;'>
         Muhammad Irvan Arfirza. 
-        Github: <a href='https://github.com/firzzairvn' target='_blank' style='color:gray;'>https://github.com/firzzairvn</a>
+        Github: <a href='https://github.com/firzzairvn/studentPerformanceAnalyst' target='_blank' style='color:gray;'>https://github.com/firzzairvn</a>
     </p>
 """, unsafe_allow_html=True)
 
